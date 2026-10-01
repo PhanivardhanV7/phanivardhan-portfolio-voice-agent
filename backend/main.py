@@ -65,6 +65,8 @@ VOICE RULES:
   offer_section_navigation. This only shows a Yes/No choice; it does not navigate.
 - Never use navigate_to_section unless the visitor has explicitly confirmed with Yes,
   open it, or an equivalent confirmation.
+- After navigate_to_section succeeds, briefly explain the key information in that section
+  aloud. Do not only say that it was opened.
 - When a visitor asks for the resume, use open_portfolio_link with link_name='resume'.
 - When a visitor wants to contact Phani, answer with the contact details and offer the
   contact section using offer_section_navigation.
@@ -259,7 +261,11 @@ async def handle_function_call(
             result = {"ok": False, "error": "Unknown portfolio section"}
         else:
             await client.send_json({"type": "navigation", "section": SECTIONS[section]})
-            result = {"ok": True, "section": SECTIONS[section]}
+            result = {
+                "ok": True,
+                "section": SECTIONS[section],
+                "instruction": "The section is open. Now give the visitor a concise spoken summary of its key information.",
+            }
     elif name == "open_portfolio_link":
         link_name = arguments.get("link_name", "")
         url = link_for(link_name)

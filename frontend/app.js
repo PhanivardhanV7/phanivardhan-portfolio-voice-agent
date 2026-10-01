@@ -167,12 +167,12 @@ function addNavigationChoice(section) {
   actions.className = 'choice-actions';
   const yes = document.createElement('button');
   yes.type = 'button';
-  yes.textContent = `Yes, open ${section}`;
+  yes.textContent = `Yes, open & explain ${section}`;
   yes.addEventListener('click', () => {
     addMessage('user', `Yes, open the ${section} section.`);
     socket?.send(JSON.stringify({
       type: 'inject_user_message',
-      content: `Yes, please open the ${section} section now.`,
+      content: `Yes, please open the ${section} section and tell me about its key information.`,
     }));
     item.remove();
     setStatus('Opening it…');
