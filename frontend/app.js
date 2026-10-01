@@ -14,6 +14,12 @@ const assistantPanel = document.querySelector('#assistant-panel');
 const closePanel = document.querySelector('#close-panel');
 const sectionPreview = document.querySelector('#section-preview');
 
+function setPanelOpen(isOpen) {
+  assistantPanel.classList.toggle('is-open', isOpen);
+  assistantPanel.hidden = !isOpen;
+  launcher.setAttribute('aria-expanded', String(isOpen));
+}
+
 let socket = null;
 let audioContext = null;
 let mediaStream = null;
@@ -286,14 +292,12 @@ function sendText(text) {
 
 micButton.addEventListener('click', toggleAssistant);
 launcher.addEventListener('click', () => {
-  const willOpen = assistantPanel.hidden;
-  assistantPanel.hidden = !willOpen;
-  launcher.setAttribute('aria-expanded', String(willOpen));
+  const willOpen = !assistantPanel.classList.contains('is-open');
+  setPanelOpen(willOpen);
   if (willOpen) textInput.focus();
 });
 closePanel.addEventListener('click', () => {
-  assistantPanel.hidden = true;
-  launcher.setAttribute('aria-expanded', 'false');
+  setPanelOpen(false);
 });
 clearButton.addEventListener('click', () => {
   conversation.innerHTML = '<div class="welcome-message">Ask me about Phani’s experience, skills, projects, education, or contact details.</div>';
