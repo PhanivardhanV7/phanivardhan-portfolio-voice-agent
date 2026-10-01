@@ -12,6 +12,7 @@ const clearButton = document.querySelector('#clear-button');
 const launcher = document.querySelector('#launcher');
 const assistantPanel = document.querySelector('#assistant-panel');
 const closePanel = document.querySelector('#close-panel');
+const sectionPreview = document.querySelector('#section-preview');
 
 let socket = null;
 let audioContext = null;
@@ -133,6 +134,7 @@ function handleServerMessage(message) {
     else window.open(`https://phanivardhan-portfolio.onrender.com/#${section}`, '_blank', 'noopener');
     setStatus(`Opening the ${section} section…`);
   } else if (message.type === 'navigation_offer') {
+    showSectionPreview(message.section);
     addNavigationChoice(message.section);
   } else if (message.type === 'open_link') {
     window.open(message.url, '_blank', 'noopener');
@@ -140,6 +142,15 @@ function handleServerMessage(message) {
   } else if (message.type === 'error') {
     showError(message.message || 'Unable to start the voice session.');
   }
+}
+
+function showSectionPreview(section) {
+  const source = document.querySelector(`#${CSS.escape(section)}`);
+  if (!source || !sectionPreview) return;
+  sectionPreview.innerHTML = source.outerHTML;
+  const previewSection = sectionPreview.querySelector('section');
+  if (previewSection) previewSection.removeAttribute('id');
+  sectionPreview.hidden = false;
 }
 
 function addNavigationChoice(section) {

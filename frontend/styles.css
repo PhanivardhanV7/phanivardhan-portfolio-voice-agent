@@ -30,6 +30,11 @@ body::before { position: fixed; inset: 0; z-index: -1; content: ""; background: 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; }
 .hero-actions a { padding: 11px 15px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); background: rgba(255,255,255,.05); text-decoration: none; font-size: 11px; }
 .hero-actions a:first-child { border-color: rgba(159,122,234,.6); background: rgba(159,122,234,.16); }
+.section-preview { margin: -15px 0 70px; border: 1px solid rgba(85,214,232,.35); border-radius: 17px; background: linear-gradient(140deg, rgba(85,214,232,.09), rgba(159,122,234,.08)); box-shadow: 0 15px 45px rgba(0,0,0,.16); }
+.section-preview::before { display: block; padding: 16px 22px 0; content: "Relevant portfolio information"; color: var(--cyan); font: 10px "DM Mono", monospace; letter-spacing: .12em; text-transform: uppercase; }
+.section-preview .portfolio-section { padding: 22px; border-top: 0; }
+.section-preview .portfolio-section h2 { font-size: clamp(26px, 4vw, 40px); }
+.section-preview .experience-list, .section-preview .skill-grid, .section-preview .education-grid { grid-template-columns: 1fr; }
 .portfolio-section { scroll-margin-top: 35px; padding: 90px 0; border-top: 1px solid rgba(255,255,255,.08); }
 .portfolio-section h2 { margin: 13px 0 22px; font-size: clamp(32px, 5vw, 52px); line-height: 1.05; letter-spacing: -.06em; }
 .portfolio-section > p:not(.section-label) { max-width: 690px; color: var(--muted); font-size: 14px; line-height: 1.8; }
