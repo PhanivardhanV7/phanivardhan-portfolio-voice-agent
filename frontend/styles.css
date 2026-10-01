@@ -10,7 +10,50 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; min-height: 100vh; font-family: Manrope, system-ui, sans-serif; }
+body { margin: 0; min-width: 320px; min-height: 100vh; color: var(--text); background: #080b18; font-family: Manrope, system-ui, sans-serif; }
+body::before { position: fixed; inset: 0; z-index: -1; content: ""; background: radial-gradient(circle at 75% 0, rgba(159,122,234,.2), transparent 38%), linear-gradient(160deg, #080b18 0%, #0a1020 55%, #080c18 100%); pointer-events: none; }
+
+.portfolio-page { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+.site-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+.site-brand { display: flex; align-items: center; gap: 9px; color: var(--text); text-decoration: none; font-size: 13px; font-weight: 700; }
+.site-brand span { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid rgba(159,122,234,.7); border-radius: 10px; color: #d9ccff; background: rgba(159,122,234,.17); font: 10px "DM Mono", monospace; }
+.site-nav nav { display: flex; flex-wrap: wrap; gap: 18px; }
+.site-nav nav a { color: var(--muted); text-decoration: none; font-size: 11px; }
+.site-nav nav a:hover { color: var(--cyan); }
+.portfolio-content { width: min(820px, 100%); }
+.portfolio-hero { min-height: 610px; padding: 132px 0 95px; }
+.portfolio-eyebrow, .section-label { margin: 0; color: var(--cyan); font: 10px "DM Mono", monospace; letter-spacing: .12em; text-transform: uppercase; }
+.portfolio-hero h1 { margin: 20px 0 15px; font-size: clamp(54px, 9vw, 100px); line-height: .95; letter-spacing: -.07em; }
+.portfolio-hero h1 span, .portfolio-section h2 span { color: transparent; background: linear-gradient(95deg, #c5a7ff, #64dae9); -webkit-background-clip: text; background-clip: text; }
+.role-line { color: #d4d9ee; font-size: 15px; font-weight: 600; }
+.portfolio-lead { max-width: 620px; margin: 22px 0 30px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 11px; }
+.hero-actions a { padding: 11px 15px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); background: rgba(255,255,255,.05); text-decoration: none; font-size: 11px; }
+.hero-actions a:first-child { border-color: rgba(159,122,234,.6); background: rgba(159,122,234,.16); }
+.portfolio-section { scroll-margin-top: 35px; padding: 90px 0; border-top: 1px solid rgba(255,255,255,.08); }
+.portfolio-section h2 { margin: 13px 0 22px; font-size: clamp(32px, 5vw, 52px); line-height: 1.05; letter-spacing: -.06em; }
+.portfolio-section > p:not(.section-label) { max-width: 690px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+.stat-grid, .skill-grid, .education-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 30px; }
+.stat-grid div, .skill-grid div, .education-grid article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.035); }
+.stat-grid strong { display: block; color: #d3c3ff; font-size: 27px; letter-spacing: -.05em; }
+.stat-grid small { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; }
+.experience-list { display: grid; gap: 11px; }
+.experience-list article { padding: 20px; border-left: 2px solid var(--purple); border-radius: 0 13px 13px 0; background: rgba(255,255,255,.035); }
+.experience-list article > div { display: flex; justify-content: space-between; gap: 15px; }
+.experience-list h3, .skill-grid h3, .education-grid h3, .project-card h3 { margin: 0 0 5px; color: #f1f3ff; font-size: 15px; }
+.experience-list b, .experience-list time { color: var(--cyan); font: 10px "DM Mono", monospace; }
+.experience-list time { color: var(--muted); white-space: nowrap; }
+.experience-list p, .skill-grid p, .education-grid p, .project-card p, .awards { margin: 11px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.skill-grid h3 { color: #d3c3ff; }
+.project-card { position: relative; padding: 25px; overflow: hidden; border: 1px solid rgba(159,122,234,.35); border-radius: 17px; background: linear-gradient(140deg, rgba(159,122,234,.13), rgba(255,255,255,.035)); }
+.project-number { margin-bottom: 25px; color: var(--cyan); font: 11px "DM Mono", monospace; }
+.tag-row, .contact-links { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 19px; }
+.tag-row span { padding: 6px 8px; border: 1px solid var(--line); border-radius: 7px; color: #c8d1ee; font: 10px "DM Mono", monospace; }
+.education-grid article strong { color: var(--green); font: 11px "DM Mono", monospace; }
+.awards { padding: 18px; border: 1px solid rgba(245,158,11,.25); border-radius: 12px; color: #d7cba9; background: rgba(245,158,11,.06); }
+.contact-section { padding-bottom: 160px; }
+.contact-links a { color: var(--cyan); font-size: 12px; text-decoration: none; }
+.contact-links a:hover { color: #fff; }
 
 .voice-widget { position: fixed; right: 25px; bottom: 25px; z-index: 99999; }
 .launcher { position: relative; display: grid; place-items: center; width: 66px; height: 66px; padding: 0; border: 3px solid rgba(255, 255, 255, .85); border-radius: 50%; background: linear-gradient(135deg, #9f7aea, #4eafd0); box-shadow: 0 12px 32px rgba(0, 0, 0, .34), 0 0 0 7px rgba(159, 122, 234, .14); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
@@ -66,8 +109,14 @@ body { margin: 0; min-width: 320px; min-height: 100vh; font-family: Manrope, sys
 .panel-footer button:hover { color: #fff; }
 
 @media (max-width: 480px) {
+  .portfolio-page { width: min(100% - 30px, 1120px); }
+  .site-nav { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .site-nav nav { gap: 12px; }
+  .portfolio-hero { min-height: 550px; padding-top: 100px; }
+  .portfolio-section { padding: 65px 0; }
+  .stat-grid, .skill-grid, .education-grid { grid-template-columns: 1fr; }
+  .experience-list article > div { flex-direction: column; gap: 6px; }
   .voice-widget { right: 15px; bottom: 15px; }
   .assistant-panel { right: -2px; bottom: 77px; width: calc(100vw - 30px); height: min(570px, calc(100vh - 105px)); }
   .launcher { width: 60px; height: 60px; }
 }
-
