@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: phanivardhan-portfolio-voice-agent
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DEEPGRAM_API_KEY
+        sync: false
+      - key: PORTFOLIO_URL
+        value: https://phanivardhan-portfolio.onrender.com
+      - key: ALLOWED_ORIGINS
+        sync: false
+
